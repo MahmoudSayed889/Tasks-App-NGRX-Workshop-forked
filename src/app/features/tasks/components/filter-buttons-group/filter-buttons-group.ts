@@ -11,6 +11,8 @@ import * as TaskActions from '../../store/tasks.actions';
 export class FilterButtonsGroup {
   private _store = inject(Store);
 
+  filters: TaskFilter[] = ['all', 'completed', 'pending']
+
   setFilter(filter: TaskFilter) {
     this._store.dispatch(TaskActions.setFilter({ filter }));
   }

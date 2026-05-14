@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Task, TaskFilter } from '../task.model';
+import { Task, TaskFilter, TaskRequest } from '../task.model';
 
 export const loadTasks = createAction('[Tasks] Load');
 
@@ -7,7 +7,20 @@ export const loadTasksSuccess = createAction('[Tasks] Load Success', props<{ tas
 
 export const loadTasksFailure = createAction('[Tasks] Load Failure', props<{ error: string }>());
 
-// export const createTask = createAction('[Tasks] Create');
+export const createTask = createAction(
+  '[Tasks] Create',
+  props<{ task: TaskRequest }>()
+);
+
+export const createTaskSuccess = createAction(
+  '[Tasks] Create Success',
+  props<{ tasks: Task[] }>()
+);
+
+export const createTaskFailure = createAction(
+  '[Tasks] Create Failure',
+  props<{ error: string }>(),
+);
 
 export const toggleTask = createAction(
   '[Tasks] Toggle',
@@ -21,4 +34,20 @@ export const toggleTasksFailure = createAction(
   props<{ error: string }>(),
 );
 
-export const setFilter = createAction("[Tasks] Set Filter",props<{filter:TaskFilter}>());
+export const setFilter = createAction("[Tasks] Set Filter", props<{ filter: TaskFilter }>());
+
+
+export const deleteTask = createAction(
+  '[Tasks] Delete',
+  props<{ _id: string }>()
+);
+
+export const deleteTaskSuccess = createAction(
+  '[Tasks] Delete Success',
+  props<{ tasks: Task[] }>()
+);
+
+export const deleteTaskFailure = createAction(
+  '[Tasks] Delete Failure',
+  props<{ error: string }>(),
+);

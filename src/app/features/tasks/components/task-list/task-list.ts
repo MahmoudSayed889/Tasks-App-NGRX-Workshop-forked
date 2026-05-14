@@ -6,10 +6,12 @@ import * as TaskSelectors from '../../store/tasks.selectors';
 import * as TaskActions from '../../store/tasks.actions';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { AddTask } from "../add-task/add-task";
+import { FilterButtonsGroup } from '../filter-buttons-group/filter-buttons-group';
 
 @Component({
   selector: 'app-task-list',
-  imports: [TaskCard, AsyncPipe],
+  imports: [TaskCard, AsyncPipe, AddTask, FilterButtonsGroup],
   templateUrl: './task-list.html',
   styleUrl: './task-list.scss',
 })

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Task } from '../task.model';
+import { Task, TaskRequest } from '../task.model';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class TaskServices {
   //
-  private baseUrl = 'https://lf7z92-3000.csb.app/tasks';
+  private baseUrl = 'https://gsvfks-3000.csb.app/tasks';
   //
   private _httpClient = inject(HttpClient);
   //
@@ -16,8 +16,8 @@ export class TaskServices {
     return this._httpClient.get<Task[]>(this.baseUrl);
   }
 
-  createTask(task: any): Observable<Task> {
-    return this._httpClient.post<Task>(this.baseUrl, task);
+  createTask(task: TaskRequest): Observable<Task[]> {
+    return this._httpClient.post<Task[]>(this.baseUrl, task);
   }
 
   // take updated completed
@@ -25,7 +25,7 @@ export class TaskServices {
     return this._httpClient.patch<Task>(`${this.baseUrl}/${id}`, { completed });
   }
 
-  deleteTask(id: string): Observable<void> {
-    return this._httpClient.delete<void>(`${this.baseUrl}/${id}`);
+  deleteTask(id: string): Observable<Task[]> {
+    return this._httpClient.delete<Task[]>(`${this.baseUrl}/${id}`);
   }
 }
