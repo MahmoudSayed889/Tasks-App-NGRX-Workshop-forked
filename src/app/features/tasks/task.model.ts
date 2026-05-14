@@ -13,3 +13,9 @@ export interface TaskState {
   error: string | null;
   filter: TaskFilter;
 }
+
+export interface TaskRequest {
+  title: string;
+  completed: boolean;
+  user: string;
+}

@@ -37,6 +37,40 @@ export const tasksReducer = createReducer(
     ...state,
     filter,
   })),
+
+  on(TaskActions.createTask, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+
+  on(TaskActions.createTaskSuccess, (state, { tasks }) => ({
+    ...state,
+    isLoading: false,
+    tasks: [...tasks]
+  })),
+
+  on(TaskActions.createTaskFailure, (state, { error }) => ({
+    ...state,
+    isLoading: false,
+    error
+  })),
+
+  on(TaskActions.deleteTask, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
+
+  on(TaskActions.deleteTaskSuccess, (state, { tasks }) => ({
+    ...state,
+    isLoading: false,
+    tasks: [...tasks]
+  })),
+
+  on(TaskActions.deleteTaskFailure, (state, { error }) => ({
+    ...state,
+    isLoading: false,
+    error
+  })),
 );
 
 function updateTaskList(tasks: Task[], updatedTask: Task): Task[] {
